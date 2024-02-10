@@ -1,0 +1,9 @@
+.height-style {
+    height: 25vh;
+}
+
+@media screen and (max-width:780px) {
+    .height-style {
+        height: 20vh;
+    }
+}

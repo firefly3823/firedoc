@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Form, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -13,7 +13,9 @@ function LandingPage() {
     const handleShow = () => setShow(true);
     const [docTitle, setDocTitle] = useState("")
     const [allDoc, setAllDoc] = useState([])
-
+    useEffect(() => {
+        getAllDoc()
+    }, [])
     const createDocument = async () => {
         if (docTitle !== "") {
 
@@ -35,27 +37,35 @@ function LandingPage() {
         try {
             const data = await getDocs(docref)
             const filteredData = data.docs.map((doc) => (
-                { ...doc.data(), id: doc.controlId }
+                { ...doc.data(), id: doc.id }
             ))
+            // console.log(filteredData)
             setAllDoc(filteredData)
         } catch (error) {
             toast.error(error.error)
         }
     }
-
-    useEffect(() => {
-        getAllDoc()
-    },[])
+    const delDoc = async (id)=>{
+        try {
+            const docDelete = doc(db,"document",id)
+            await deleteDoc(docDelete)
+            getAllDoc();
+            toast.success("Document Removed")
+        } catch (error) {
+            toast.error(error.error)
+        }
+    }
+    
     return (
         <>
             <div className='d-flex flex-column  justify-content-center' style={{ minHeight: "70vh" }}>
                 <div className='d-flex justify-content-around flex-wrap'>
                     {allDoc && allDoc.map((doc,index) => (
                         <div className='mt-4'>
-                            <Card style={{ height: '220px', width: '18rem' }} key={index+1} className='bg-light'>
+                            <Card style={{ height: '220px', width: '18rem' }} key={index} className='bg-light'>
                                 <Card.Body>
                                     <div className='d-flex justify-content-end align-items-center'>
-                                        <Link className='text-success' to={`/updatedocument/${doc?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                        <Link className='text-success' to={`/updatedoc/${doc?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-edit" width={35} height={35} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -68,7 +78,7 @@ function LandingPage() {
                                     <Card.Text>
                                         {doc?.note.slice(0, 60)}
                                     </Card.Text>
-                                    <div className='d-flex justify-content-end text-danger' style={{ cursor: 'pointer', marginTop: doc?.note !== "" ? '0px' : '65px', marginRight: '8px' }} >
+                                    <div className='d-flex justify-content-end text-danger' style={{ cursor: 'pointer', marginTop: doc?.note !== "" ? '0px' : '65px', marginRight: '8px' }} onClick={()=> delDoc(doc.id)} >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width={35} height={35} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M4 7l16 0" />
