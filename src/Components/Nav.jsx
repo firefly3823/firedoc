@@ -7,7 +7,7 @@ function Nav() {
         <Navbar expand="lg" className="bg-primary">
             <Container>
                 <Navbar.Brand><Link style={{ textDecoration: 'none' }} className='text-light ms-3 fs-2 fw-bold' to={'/'}>FIRE DOC
-                    <span className='ms-2'><i class="fa-solid fa-file" style={{ color: 'white' }}></i></span></Link></Navbar.Brand>
+                    <span className='ms-2'><i className="fa-solid fa-file" style={{ color: 'white' }}></i></span></Link></Navbar.Brand>
             </Container>
         </Navbar>
     )

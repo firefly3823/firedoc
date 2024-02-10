@@ -6,7 +6,7 @@ function Footer() {
         <div className='d-flex text-light justify-content-center align-items-center flex-column bg-primary text-light mt-5 flex-wrap' style={{ width: '100%', height: '350px' }}>
             <div className='footer-content d-flex justify-content-evenly w-100 flex-wrap'>
                 <div className='website d-flex flex-column margin-style'>
-                    <h4 className='text-light'>FIRE DOC<span className='ms-2'><i class="fa-solid fa-file" style={{ color: 'white' }}></i></span></h4>
+                    <h4 className='text-light'>FIRE DOC<span className='ms-2'><i className="fa-solid fa-file" style={{ color: 'white' }}></i></span></h4>
                     <h5 className='text-light'>
                         Create Document and save❤️</h5>
                     <h6>Code licensed Media, docs CC BY 3.0.</h6>
@@ -24,11 +24,11 @@ function Footer() {
 
                     </div>
                     <div>
-                        <Link to={'/'} className='mx-2 text-light' style={{ textDecoration: 'none', color: 'white' }}><i class="fa-brands fa-linkedin" style={{ color: 'white' }}></i></Link>
+                        <Link to={'/'} className='mx-2 text-light' style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-linkedin" style={{ color: 'white' }}></i></Link>
                         <Link to={'/'} className='mx-3' style={{ textDecoration: 'none', color: 'white' }}>
-                            <i class="fa-brands fa-twitter" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
-                        <Link to={'/'} className='mx-3' style={{ textDecoration: 'none', color: 'white' }}><i class="fa-brands fa-facebook-f" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
-                        <Link to={'/'} className='mx-2' style={{ textDecoration: 'none', color: 'white' }}><i class="fa-regular fa-envelope" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
+                            <i className="fa-brands fa-twitter" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
+                        <Link to={'/'} className='mx-3' style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-facebook-f" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
+                        <Link to={'/'} className='mx-2' style={{ textDecoration: 'none', color: 'white' }}><i className="fa-regular fa-envelope" style={{ textDecoration: 'none', color: 'white' }}></i></Link>
 
                     </div>
                 </div>
