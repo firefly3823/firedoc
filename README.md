@@ -7,3 +7,11 @@ runme:
 Document app using React
 
 FireBase Realtime database is used
+
+TO RUN PROJECT
+
+```sh {"id":"01HPA5ZVFYDAB4ZGARFF0HETV5"}
+cd ./project
+npm install
+npm start
+```

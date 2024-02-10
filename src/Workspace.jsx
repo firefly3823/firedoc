@@ -17,7 +17,7 @@ const docref = doc(db,"document",id)
 const navigate = useNavigate()
 useEffect(() => {
         getNotes()
-    }, [])
+    },[])
 
 const getNotes = async()=>{
     try {
